@@ -267,6 +267,7 @@ header {
   align-items: center;
   padding: 0.7rem 2rem;
   border-bottom: 1px solid var(--dark-color);
+  margin-bottom: 1rem;
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -275,7 +276,6 @@ header {
     z-index: 1;
     width: 100%;
     opacity: 0.9;
-    margin-bottom: 1rem;
 
     &.main {
       justify-content: center;
