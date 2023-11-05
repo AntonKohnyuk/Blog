@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--light-color);
   cursor: pointer;
   text-decoration: none;
 
@@ -265,13 +265,12 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.7rem 2rem;
   border-bottom: 1px solid var(--dark-color);
-  margin-bottom: 1rem;
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 0.7rem 2rem;
     z-index: 1;
     width: 100%;

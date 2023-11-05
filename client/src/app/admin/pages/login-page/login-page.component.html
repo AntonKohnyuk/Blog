@@ -1,1 +1,58 @@
-<p>login-page works!</p>
+<form class="card" [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h2>logIn admin panel</h2>
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid:
+        loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+    }"
+  >
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+  </div>
+  <div
+    class="validation"
+    *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+  >
+    <small
+      *ngIf="(loginForm.get('email')?.errors)!['required']; else emailError"
+      >Email field is required!
+    </small>
+    <ng-template #emailError>
+      <small> Enter a valid email! </small>
+    </ng-template>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid:
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+    }"
+  >
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  <div
+    class="validation"
+    *ngIf="
+      loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+    "
+  >
+    <small
+      *ngIf="(loginForm.get('password')?.errors)!['required']; else lengthError"
+      >Password field is required!
+    </small>
+    <ng-template #lengthError>
+      <small>
+        Password length must be
+        {{ (loginForm.get("password")?.errors)!["minlength"].requiredLength }}
+        symbols! Now:
+        {{ loginForm.get("password")?.value.length }}
+      </small>
+    </ng-template>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+    LogIn
+  </button>
+</form>
