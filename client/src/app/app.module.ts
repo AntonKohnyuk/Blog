@@ -17,14 +17,10 @@ import { PostComponent } from './shared/components/post/post.component';
     PostPageComponent,
     HomePageComponent,
     AdminLayoutComponent,
-    PostComponent
+    PostComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
