@@ -9,6 +9,7 @@ import { PostPageComponent } from './pages/post-page/post-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AdminLayoutComponent } from './admin/shared/cpmponents/admin-layout/admin-layout.component';
 import { PostComponent } from './shared/components/post/post.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { PostComponent } from './shared/components/post/post.component';
     AdminLayoutComponent,
     PostComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
