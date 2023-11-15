@@ -52,7 +52,11 @@
       </small>
     </ng-template>
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="loginForm.invalid || submitted"
+  >
     LogIn
   </button>
 </form>
