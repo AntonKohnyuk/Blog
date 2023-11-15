@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { PostPageComponent } from './pages/post-page/post-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { AdminLayoutComponent } from './admin/shared/cpmponents/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './admin/shared/components/admin-layout/admin-layout.component';
 import { PostComponent } from './shared/components/post/post.component';
 import { SharedModule } from './shared/shared.module';
 
