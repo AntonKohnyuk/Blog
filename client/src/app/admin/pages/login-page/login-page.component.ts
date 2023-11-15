@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
   public loginForm!: FormGroup;
-
+  submitted: boolean = false;
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -27,6 +27,7 @@ export class LoginPageComponent implements OnInit {
 
   submit() {
     if (this.loginForm.invalid) return;
+    this.submitted = true;
     const user: User = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
@@ -34,6 +35,7 @@ export class LoginPageComponent implements OnInit {
     this.auth.login(user).subscribe(() => {
       this.loginForm.reset();
       this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
     });
   }
 }
