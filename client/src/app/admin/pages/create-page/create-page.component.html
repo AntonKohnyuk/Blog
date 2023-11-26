@@ -8,7 +8,7 @@
         createForm.get('title')?.invalid && createForm.get('title')?.touched
     }"
   >
-    <label for="title">Post title:</label>
+    <label for="title">Title:</label>
     <input id="title" type="text" formControlName="title" />
   </div>
 
@@ -21,10 +21,6 @@
     </small>
   </div>
 
-  <div class="form-control">
-    <label>Post content:</label>
-  </div>
-
   <div
     class="form-control"
     [ngClass]="{
@@ -32,7 +28,7 @@
         createForm.get('author')?.invalid && createForm.get('author')?.touched
     }"
   >
-    <label for="author">Post author:</label>
+    <label for="author">Author:</label>
     <input id="author" type="text" formControlName="author" />
   </div>
 
@@ -45,6 +41,11 @@
     <small *ngIf="(createForm.get('author')?.errors)!['required']"
       >Author field is required!
     </small>
+  </div>
+
+  <div class="form-control">
+    <label>Content:</label>
+    <quill-editor formControlName="text"></quill-editor>
   </div>
 
   <button class="btn btn-block btn-dark" [disabled]="createForm.invalid">
