@@ -1,1 +1,54 @@
-<p>create-page works!</p>
+<form class="card" [formGroup]="createForm" (ngSubmit)="submit()">
+  <h2>Add new post</h2>
+
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid:
+        createForm.get('title')?.invalid && createForm.get('title')?.touched
+    }"
+  >
+    <label for="title">Post title:</label>
+    <input id="title" type="text" formControlName="title" />
+  </div>
+
+  <div
+    class="validation"
+    *ngIf="createForm.get('title')?.invalid && createForm.get('title')?.touched"
+  >
+    <small *ngIf="(createForm.get('title')?.errors)!['required']"
+      >Title field is required!
+    </small>
+  </div>
+
+  <div class="form-control">
+    <label>Post content:</label>
+    <quill-editor></quill-editor>
+  </div>
+
+  <div
+    class="form-control"
+    [ngClass]="{
+      invalid:
+        createForm.get('author')?.invalid && createForm.get('author')?.touched
+    }"
+  >
+    <label for="author">Post author:</label>
+    <input id="author" type="text" formControlName="author" />
+  </div>
+
+  <div
+    class="validation"
+    *ngIf="
+      createForm.get('author')?.invalid && createForm.get('author')?.touched
+    "
+  >
+    <small *ngIf="(createForm.get('author')?.errors)!['required']"
+      >Author field is required!
+    </small>
+  </div>
+
+  <button class="btn btn-block btn-dark" [disabled]="createForm.invalid">
+    Add post
+  </button>
+</form>
