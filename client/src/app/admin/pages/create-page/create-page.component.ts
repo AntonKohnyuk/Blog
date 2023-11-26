@@ -14,7 +14,7 @@ export class CreatePageComponent implements OnInit {
   ngOnInit(): void {
     this.createForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(40)]],
-      body: ['', Validators.required],
+      text: ['', Validators.required],
       author: ['', Validators.required],
     });
   }
@@ -26,9 +26,11 @@ export class CreatePageComponent implements OnInit {
 
     const post: Post = {
       title: this.createForm.value.title,
-      text: this.createForm.value.body,
+      text: this.createForm.value.text,
       author: this.createForm.value.author,
       date: new Date(),
     };
+
+    console.log(post);
   }
 }
