@@ -1,1 +1,75 @@
-<p>edit-page works!</p>
+<div class="container" *ngIf="post; else loading">
+  <form
+    [formGroup]="editForm"
+    (ngSubmit)="submit()"
+    class="edit-form"
+    *ngIf="isEdit; else postView"
+  >
+    <div
+      class="form-control"
+      [ngClass]="{
+        invalid:
+          editForm.get('title')?.invalid && editForm.get('title')?.touched
+      }"
+    >
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title" />
+    </div>
+
+    <div
+      class="validation"
+      *ngIf="editForm.get('title')?.invalid && editForm.get('title')?.touched"
+    >
+      <small *ngIf="(editForm.get('title')?.errors)!['required']"
+        >Title field is required!
+      </small>
+    </div>
+
+    <div class="form-control">
+      <label>Content:</label>
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+
+    <div class="form-buttons">
+      <button
+        class="btn btn-block btn-dark"
+        [disabled]="editForm.invalid || submitted"
+      >
+        Update
+      </button>
+      <button
+        class="btn btn-block btn-danger"
+        onclick="(e)=>{
+        e.preventDefault();
+        changeEdit()
+      }"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+
+  <ng-template #postView>
+    <article class="post">
+      <div class="post-header">
+        <h1>{{ post.title }}</h1>
+        <a (click)="changeEdit()">
+          <mat-icon fontIcon="edit"></mat-icon>
+        </a>
+      </div>
+      <quill-view [content]="post.text" format="html" theme="snow"></quill-view>
+      <div class="post-bottom">
+        <p>
+          <small>By: {{ post.author }}</small>
+        </p>
+        <p>{{ post.date | date }}</p>
+      </div>
+    </article>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
