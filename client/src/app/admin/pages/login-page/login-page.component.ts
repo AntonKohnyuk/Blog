@@ -43,7 +43,6 @@ export class LoginPageComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    console.log('hgere0');
     this.auth.login(user).subscribe({
       next: (v) => {
         this.loginForm.reset();
