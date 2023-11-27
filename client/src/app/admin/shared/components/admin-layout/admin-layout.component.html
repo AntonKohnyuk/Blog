@@ -1,7 +1,7 @@
 <header class="bg-primary">
   <nav class="navbar bg-primary">
     <h1>
-      <a routerLink="/">Angular admin</a>
+      <a [routerLink]="['/admin', 'dashboard']">Angular admin</a>
     </h1>
     <ul *ngIf="auth.isLogin()">
       <li>
