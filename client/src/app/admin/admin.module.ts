@@ -24,6 +24,6 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     SharedModule,
   ],
-  providers: [AuthService],
+  providers: [],
 })
 export class AdminModule {}

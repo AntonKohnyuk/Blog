@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AdminLayoutComponent } from './admin/shared/components/admin-layout/admin-layout.component';
 import { PostComponent } from './shared/components/post/post.component';
 import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+
+const HTTP_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor,
+};
 
 @NgModule({
   declarations: [
@@ -26,7 +34,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [HTTP_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
