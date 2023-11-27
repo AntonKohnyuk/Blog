@@ -1,31 +1,43 @@
+<mat-form-field class="input">
+  <mat-label>Find post</mat-label>
+  <input matInput type="text" [(ngModel)]="search" placeholder="Text..." />
+  @if (search) {
+  <button matSuffix mat-icon-button aria-label="Clear" (click)="search = ''">
+    <mat-icon>close</mat-icon>
+  </button>
+  }
+</mat-form-field>
 <ng-container *ngIf="posts.length; else loading">
-  <table>
+  <table matSort (matSortChange)="sortData($event)">
     <thead>
       <tr>
         <th>#</th>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Date</th>
+        <th mat-sort-header="author">Author</th>
+        <th mat-sort-header="title">Title</th>
+        <th mat-sort-header="date">Date</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts; let idx = index">
+      @for (post of sortedData | searchPosts: search; let idx = $index; track
+      post) {
+      <tr>
         <td>{{ idx + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.date | date : "medium" }}</td>
-        <td>
-          <button (click)="remove(post.id!)">Del</button>
-          <button [routerLink]="['/admin', 'post', post.id, 'edit']">
-            Open
-          </button>
+        <td class="actions">
+          <a [routerLink]="['/admin', 'post', post.id, 'edit']">Open</a>
+          <a class="delete" (click)="remove(post.id!)">
+            <mat-icon fontIcon="delete"></mat-icon>
+          </a>
         </td>
       </tr>
+      }
     </tbody>
   </table>
 </ng-container>
 
 <ng-template #loading>
-  <p>loading</p>
+  <mat-spinner></mat-spinner>
 </ng-template>
