@@ -5,12 +5,12 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PostPageComponent } from './pages/post-page/post-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', component: HomePageComponent },
+      { path: '', redirectTo: 'posts', pathMatch: 'full' },
+      { path: 'posts', component: HomePageComponent },
       { path: 'post/:id', component: PostPageComponent },
     ],
   },
@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

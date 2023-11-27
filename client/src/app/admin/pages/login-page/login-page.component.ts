@@ -25,6 +25,8 @@ export class LoginPageComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       if (params['needLogin']) {
         this.message = 'Please, log in again!';
+      } else if (params['sessionEnd']) {
+        this.message = 'The session has expired. Log in again!';
       }
     });
 
@@ -41,15 +43,16 @@ export class LoginPageComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    this.auth.login(user).subscribe(
-      () => {
+    console.log('hgere0');
+    this.auth.login(user).subscribe({
+      next: (v) => {
         this.loginForm.reset();
         this.router.navigate(['/admin', 'dashboard']);
         this.submitted = false;
       },
-      () => {
+      error: (e) => {
         this.submitted = false;
-      }
-    );
+      },
+    });
   }
 }
