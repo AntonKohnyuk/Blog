@@ -19,4 +19,16 @@ export class PostsService {
         })
       );
   }
+
+  getAll(): Observable<Post[]> {
+    return this.http.get(`${environment.fireBaseDbUrl}/posts.json`).pipe(
+      map((repsonse: { [key: string]: any }) => {
+        return Object.keys(repsonse).map((key) => ({
+          ...repsonse[key],
+          id: key,
+          date: new Date(repsonse[key].date),
+        }));
+      })
+    );
+  }
 }
