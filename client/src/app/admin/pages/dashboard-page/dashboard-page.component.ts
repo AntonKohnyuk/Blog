@@ -11,23 +11,30 @@ import { PostsService } from 'src/app/shared/services/posts.service';
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
   public posts: Post[] = [];
-  private postServiceSub!: Subscription;
+  private postServiceSubG!: Subscription;
+  private postServiceSubD!: Subscription;
+
   public sortedData!: Post[];
   public search = '';
   constructor(private postsServices: PostsService) {}
 
   ngOnInit(): void {
-    this.postServiceSub = this.postsServices.getAll().subscribe((posts) => {
+    this.postServiceSubG = this.postsServices.getAll().subscribe((posts) => {
       this.posts = posts;
       this.sortedData = this.posts.slice();
     });
   }
 
   ngOnDestroy() {
-    if (this.postServiceSub) this.postServiceSub.unsubscribe();
+    if (this.postServiceSubG) this.postServiceSubG.unsubscribe();
+    if (this.postServiceSubD) this.postServiceSubD.unsubscribe();
   }
 
-  remove(postId: string) {}
+  remove(postId: string) {
+    this.postServiceSubD = this.postsServices.remove(postId).subscribe(() => {
+      this.sortedData = this.sortedData.filter((post) => post.id !== postId);
+    });
+  }
 
   sortData(sort: Sort) {
     const data = this.posts.slice();
