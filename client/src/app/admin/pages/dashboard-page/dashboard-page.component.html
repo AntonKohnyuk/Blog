@@ -1,13 +1,13 @@
-<mat-form-field class="input">
-  <mat-label>Find post</mat-label>
-  <input matInput type="text" [(ngModel)]="search" placeholder="Text..." />
-  @if (search) {
-  <button matSuffix mat-icon-button aria-label="Clear" (click)="search = ''">
-    <mat-icon>close</mat-icon>
-  </button>
-  }
-</mat-form-field>
 <ng-container *ngIf="posts.length; else loading">
+  <mat-form-field class="input">
+    <mat-label>Find post</mat-label>
+    <input matInput type="text" [(ngModel)]="search" placeholder="Text..." />
+    @if (search) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="search = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+    }
+  </mat-form-field>
   <table matSort (matSortChange)="sortData($event)">
     <thead>
       <tr>
@@ -39,5 +39,7 @@
 </ng-container>
 
 <ng-template #loading>
-  <mat-spinner></mat-spinner>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
 </ng-template>
