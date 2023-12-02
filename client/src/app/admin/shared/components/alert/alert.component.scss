@@ -1,0 +1,13 @@
+.alert-wrap {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  max-width: 200px;
+  z-index: 100;
+  .alert-warning {
+    background-color: yellow;
+  }
+  .alert-error {
+    background-color: red;
+  }
+}
