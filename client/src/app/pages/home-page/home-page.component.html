@@ -1,9 +1,11 @@
 <section class="posts">
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+  <ng-container *ngIf="posts$ | async as posts; else loading">
+    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </section>

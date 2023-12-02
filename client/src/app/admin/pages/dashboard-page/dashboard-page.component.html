@@ -25,7 +25,7 @@
         <td>{{ idx + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
-        <td>{{ post.date | date : "medium" }}</td>
+        <td>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</td>
         <td class="actions">
           <a [routerLink]="['/admin', 'post', post.id, 'edit']">Open</a>
           <a class="delete" (click)="remove(post.id!)">

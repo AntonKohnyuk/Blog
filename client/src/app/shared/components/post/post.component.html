@@ -1,10 +1,16 @@
 <article class="card">
   <div class="card-header">
-    <h2>Post Title</h2>
-    <small>09.06.2023</small>
+    <h2>{{ post.title | text : 10 }}</h2>
+    <p>{{ post.date | date : "dd MMM, yyyy" }}</p>
   </div>
-  <div>
-    <small>Bibas</small>
+  <div class="card-content">
+    <div class="card-author">
+      <small class="author"
+        >From: <span>{{ post.author }}</span></small
+      >
+    </div>
   </div>
-  <button class="btn btn-dark" [routerLink]="['/post', 12]">Open</button>
+  <div class="card-bottom">
+    <button class="btn btn-dark" [routerLink]="['/post', post.id]">Open</button>
+  </div>
 </article>
