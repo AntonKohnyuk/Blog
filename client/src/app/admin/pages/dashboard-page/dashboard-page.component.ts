@@ -3,6 +3,7 @@ import { Sort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/shared/interfaces/interfaces';
 import { PostsService } from 'src/app/shared/services/posts.service';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -16,7 +17,10 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   public sortedData!: Post[];
   public search = '';
-  constructor(private postsServices: PostsService) {}
+  constructor(
+    private postsServices: PostsService,
+    private alert: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.postServiceSubG = this.postsServices.getAll().subscribe((posts) => {
@@ -33,6 +37,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   remove(postId: string) {
     this.postServiceSubD = this.postsServices.remove(postId).subscribe(() => {
       this.sortedData = this.sortedData.filter((post) => post.id !== postId);
+      this.alert.warning('Post has been removed!');
     });
   }
 

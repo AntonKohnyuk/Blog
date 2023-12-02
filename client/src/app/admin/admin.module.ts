@@ -10,6 +10,9 @@ import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatSortModule } from '@angular/material/sort';
 import { SearchPipe } from './shared/pipes/search.pipe';
+import { AlertComponent } from './shared/components/alert/alert.component';
+import { AlertService } from './shared/services/alert.service';
+import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { SearchPipe } from './shared/pipes/search.pipe';
     CreatePageComponent,
     EditPageComponent,
     SearchPipe,
+    AdminLayoutComponent,
+    AlertComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +32,6 @@ import { SearchPipe } from './shared/pipes/search.pipe';
     SharedModule,
     MatSortModule,
   ],
-  providers: [],
+  providers: [AlertService],
 })
 export class AdminModule {}

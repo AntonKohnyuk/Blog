@@ -4,6 +4,7 @@ import { PostsService } from 'src/app/shared/services/posts.service';
 import { Post } from 'src/app/shared/interfaces/interfaces';
 import { switchMap, Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -22,7 +23,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private postsService: PostsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alert: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
         this.post = updatedPost;
         this.submitted = false;
         this.isEdit = !this.isEdit;
+        this.alert.success('Post has been update!');
       });
   }
 
