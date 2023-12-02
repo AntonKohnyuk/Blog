@@ -1,25 +1,27 @@
-<section class="post">
-  <div class="header">
-    <h2>post title</h2>
-    <button [routerLink]="['/']" class="btn btn-link">On main</button>
-  </div>
+<ng-container *ngIf="post$ | async as post; else loading">
+  <article class="post">
+    <nav class="post-navigation">
+      <a [routerLink]="['/posts']"
+        ><mat-icon fontIcon="arrow_back"></mat-icon
+      ></a>
+    </nav>
+    <div class="post-header">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</p>
+    </div>
+    <div class="post-content">
+      <quill-view [content]="post.text" format="html" theme="snow"></quill-view>
+    </div>
+    <div class="post-bottom">
+      <p>
+        <small>By: {{ post.author }}</small>
+      </p>
+    </div>
+  </article>
+</ng-container>
 
-  <div class="info">
-    <strong>Author</strong>
-    <small>12.03.2019</small>
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
   </div>
-  <div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
-      blanditiis ad veritatis, mollitia, qui vero ipsum similique, labore veniam
-      placeat aut culpa voluptates ipsam sed praesentium assumenda perferendis
-      quidem accusantium.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
-      blanditiis ad veritatis, mollitia, qui vero ipsum similique, labore veniam
-      placeat aut culpa voluptates ipsam sed praesentium assumenda perferendis
-      quidem accusantium.
-    </p>
-  </div>
-</section>
+</ng-template>

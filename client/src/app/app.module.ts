@@ -12,6 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import { TextPipe } from './shared/pipes/text.pipe';
+
+registerLocaleData(localeRu, 'ru');
+
 const HTTP_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
@@ -31,6 +37,7 @@ const HTTP_INTERCEPTOR_PROVIDER: Provider = {
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    TextPipe,
   ],
   providers: [HTTP_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
