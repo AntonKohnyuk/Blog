@@ -1,41 +1,48 @@
 <ng-container *ngIf="posts.length; else loading">
-  <mat-form-field class="input">
-    <mat-label>Find post</mat-label>
-    <input matInput type="text" [(ngModel)]="search" placeholder="Text..." />
-    @if (search) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="search = ''">
-      <mat-icon>close</mat-icon>
-    </button>
-    }
-  </mat-form-field>
-  <table matSort (matSortChange)="sortData($event)">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th mat-sort-header="author">Author</th>
-        <th mat-sort-header="title">Title</th>
-        <th mat-sort-header="date">Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (post of sortedData | searchPosts: search; let idx = $index; track
-      post) {
-      <tr>
-        <td>{{ idx + 1 }}</td>
-        <td>{{ post.author }}</td>
-        <td>{{ post.title }}</td>
-        <td>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</td>
-        <td class="actions">
-          <a [routerLink]="['/admin', 'post', post.id, 'edit']">Open</a>
-          <a class="delete" (click)="remove(post.id!)">
-            <mat-icon fontIcon="delete"></mat-icon>
-          </a>
-        </td>
-      </tr>
+  <section class="container">
+    <mat-form-field class="input">
+      <mat-label>Find post</mat-label>
+      <input matInput type="text" [(ngModel)]="search" placeholder="Title..." />
+      @if (search) {
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="search = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
       }
-    </tbody>
-  </table>
+    </mat-form-field>
+    <table matSort (matSortChange)="sortData($event)">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th mat-sort-header="author">Author</th>
+          <th mat-sort-header="title">Title</th>
+          <th mat-sort-header="date">Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (post of sortedData | searchPosts: search; let idx = $index; track
+        post) {
+        <tr>
+          <td>{{ idx + 1 }}</td>
+          <td>{{ post.author }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</td>
+          <td class="actions">
+            <a [routerLink]="['/admin', 'post', post.id, 'edit']">Open</a>
+            <a class="delete" (click)="remove(post.id!)">
+              <mat-icon fontIcon="delete"></mat-icon>
+            </a>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </section>
 </ng-container>
 
 <ng-template #loading>

@@ -1,5 +1,37 @@
+@import "../../../../shared/theme/mixins";
+@import "../../../../shared/theme/colors";
+
 .container {
   width: 100%;
   height: 100%;
   overflow: auto;
+  padding: 80px 4rem 0;
+  background-color: $primary_color;
+  overflow-y: auto;
+}
+
+.admin-header {
+  @include fixed-header;
+  font-family: "Playfair Display", serif;
+  min-height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  a {
+    font-size: 1.2rem;
+  }
+}
+
+.light {
+  background-color: $light_primary_color;
+  color: $secondary_text;
+  a {
+    color: $secondary_text;
+  }
+}
+.dark {
+  background-color: $dark_primary_color;
+  color: $text_icons;
 }

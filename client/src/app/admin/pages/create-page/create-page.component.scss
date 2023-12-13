@@ -1,4 +1,13 @@
+@import "../../../shared/theme/mixins";
+@import "../../../shared/theme/colors";
+
 form {
   max-width: 800px;
   margin: 2rem auto;
-}
+  background-color: $light_primary_color;
+  padding: 2rem 4rem;
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.15);
+  .header {
+    @include flex-centre;
+  }
+

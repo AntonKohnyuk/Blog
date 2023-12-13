@@ -57,7 +57,13 @@
           <mat-icon fontIcon="edit"></mat-icon>
         </a>
       </div>
-      <quill-view [content]="post.text" format="html" theme="snow"></quill-view>
+      <div class="post-text">
+        <quill-view
+          [content]="post.text"
+          format="html"
+          theme="snow"
+        ></quill-view>
+      </div>
       <div class="post-bottom">
         <p>
           <small>By: {{ post.author }}</small>

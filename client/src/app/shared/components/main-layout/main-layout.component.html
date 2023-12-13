@@ -1,6 +1,33 @@
-<header class="header">
-  <h1>TheBlog</h1>
+<header class="main-header">
+  <a [routerLink]="['/posts', '']"><h1>Cozy Corner</h1></a>
+  <nav>
+    <a [routerLink]="['/admin', 'dashboard']">Admin</a>
+  </nav>
 </header>
-<main class="container">
-  <router-outlet></router-outlet>
-</main>
+<div class="container">
+  <main class="main">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="main-footer">
+    <div class="main-footer-container">
+      <div class="layout-wrap">
+        <address class="info">
+          <div class="element">
+            <h6 class="element-header">Developed by:</h6>
+            <p>Anton Kohnyuk</p>
+          </div>
+          <div class="element">
+            <h6 class="element-header">Contacts:</h6>
+            <p>anton.kohnyuk&#64;mail.ru</p>
+          </div>
+        </address>
+      </div>
+      <div class="line"></div>
+      <div class="credits">
+        <div class="credits-text">
+          <p>2023, "CozyCorner"</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

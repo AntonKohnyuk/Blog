@@ -1,7 +1,16 @@
+@import "../../theme/colors";
+@import "../../theme/mixins";
+
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
+  background-color: $light_primary_color;
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.15);
+  min-width: 300px;
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &-header {
     display: flex;
@@ -13,21 +22,21 @@
     margin-bottom: 0.5rem;
   }
 
-  &-author {
-    display: flex;
-    justify-content: end;
-    .author {
-      font-size: 0.8rem;
-      color: #7a7a7a;
-      border-color: #e5e5e5;
-      border-width: 0 0 1px;
-      border-style: solid;
-      span {
-        font-style: italic;
+  &-bottom {
+    @include flex-row;
+    justify-content: space-between;
+
+    .card-author {
+      .author {
+        font-size: 0.8rem;
+        color: #7a7a7a;
+        border-color: #e5e5e5;
+        border-width: 0 0 1px;
+        border-style: solid;
+        span {
+          font-style: italic;
+        }
       }
     }
-  }
-
-  &-bottom {
   }
 }
