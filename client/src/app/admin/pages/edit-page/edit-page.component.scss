@@ -1,3 +1,5 @@
+@import "../../../shared/theme/colors";
+
 .loading {
   width: 100%;
   height: 100%;
@@ -15,17 +17,31 @@
   font-size: 1.5rem;
   margin: 3rem auto 6rem;
   overflow: auto;
+  background-color: $light_primary_color;
+  padding: 2rem 4rem;
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.15);
 
   .post {
     width: 100%;
+
     &-header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      border-color: #e5e5e5;
+      border-width: 0 0 1px;
+      border-style: solid;
       a {
         color: black;
       }
     }
+
+    &-text {
+      border-color: #e5e5e5;
+      border-width: 0 0 1px;
+      border-style: solid;
+    }
+
     &-bottom {
       display: flex;
       flex-direction: row;

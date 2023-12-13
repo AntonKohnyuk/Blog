@@ -16,3 +16,9 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
+@mixin flex-centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
