@@ -1,4 +1,4 @@
-import { NgModule, Provider } from '@angular/core';
+import { NgModule, Provider, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { TextPipe } from './shared/pipes/text.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -38,6 +39,12 @@ const HTTP_INTERCEPTOR_PROVIDER: Provider = {
     BrowserAnimationsModule,
     SharedModule,
     TextPipe,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [HTTP_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
