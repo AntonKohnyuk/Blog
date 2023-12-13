@@ -1,3 +1,6 @@
+@import "../../../shared/theme/mixins";
+@import "../../../shared/theme/colors";
+
 a {
   color: black;
 }
@@ -23,4 +26,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  background-color: $light_primary_color;
+  padding: 2rem 4rem;
 }

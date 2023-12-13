@@ -1,11 +1,11 @@
 <header class="main-header">
-  <h1>Cozy Corner</h1>
+  <a [routerLink]="['/posts', '']"><h1>Cozy Corner</h1></a>
   <nav>
-    <a [routerLink]="['/admin', 'login']">Admin</a>
+    <a [routerLink]="['/admin', 'dashboard']">Admin</a>
   </nav>
 </header>
 <div class="container">
-  <main>
+  <main class="main">
     <router-outlet></router-outlet>
   </main>
   <footer class="main-footer">

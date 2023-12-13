@@ -1,27 +1,33 @@
-<ng-container *ngIf="post$ | async as post; else loading">
-  <article class="post">
-    <nav class="post-navigation">
-      <a [routerLink]="['/posts']"
-        ><mat-icon fontIcon="arrow_back"></mat-icon
-      ></a>
-    </nav>
-    <div class="post-header">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</p>
-    </div>
-    <div class="post-content">
-      <quill-view [content]="post.text" format="html" theme="snow"></quill-view>
-    </div>
-    <div class="post-bottom">
-      <p>
-        <small>By: {{ post.author }}</small>
-      </p>
-    </div>
-  </article>
-</ng-container>
+<section class="post-container">
+  <ng-container *ngIf="post$ | async as post; else loading">
+    <article class="post">
+      <nav class="post-navigation">
+        <a [routerLink]="['/posts']"
+          ><mat-icon fontIcon="arrow_back"></mat-icon
+        ></a>
+      </nav>
+      <div class="post-header">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.date | date : "dd MMM, yyyy 'at' H:mm" }}</p>
+      </div>
+      <div class="post-content">
+        <quill-view
+          [content]="post.text"
+          format="html"
+          theme="snow"
+        ></quill-view>
+      </div>
+      <div class="post-bottom">
+        <p>
+          <small>By: {{ post.author }}</small>
+        </p>
+      </div>
+    </article>
+  </ng-container>
 
-<ng-template #loading>
-  <div class="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-</ng-template>
+  <ng-template #loading>
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</section>

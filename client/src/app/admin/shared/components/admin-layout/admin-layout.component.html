@@ -1,9 +1,13 @@
 <app-alert></app-alert>
-<header class="bg-primary">
-  <nav class="navbar bg-primary">
+<header
+  class="admin-header"
+  [ngClass]="{ light: !auth.isLogin(), dark: auth.isLogin() }"
+>
+  <nav class="navbar">
     <h1>
       <a [routerLink]="['/admin', 'dashboard']">Admin</a>
     </h1>
+    <a [routerLink]="['/posts', '']">Posts</a>
     <ul *ngIf="auth.isLogin()">
       <li>
         <a [routerLink]="['/admin', 'dashboard']">Main</a>
