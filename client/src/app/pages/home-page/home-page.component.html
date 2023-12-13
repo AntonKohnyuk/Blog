@@ -1,6 +1,13 @@
 <section class="posts">
   <ng-container *ngIf="posts$ | async as posts; else loading">
-    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    <mat-grid-list cols="3" class="posts-grid">
+      <mat-grid-tile
+        *ngFor="let post of posts; trackBy: trackByFn"
+        class="posts-grid-tile"
+      >
+        <app-post [post]="post"></app-post>
+      </mat-grid-tile>
+    </mat-grid-list>
   </ng-container>
 
   <ng-template #loading>

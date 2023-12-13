@@ -16,4 +16,8 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.posts$ = this.postsService.getAll();
   }
+
+  trackByFn(index, item: Post) {
+    return item!.id + item.title + item.author;
+  }
 }
